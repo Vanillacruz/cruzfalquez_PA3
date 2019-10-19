@@ -9,12 +9,10 @@ import java.security.SecureRandom;
 import java.util.Scanner;
 
 public class LearnMath {
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         final int NUM_QUESTIONS = 10;
         int answer = 0;
-        int choice = 0;
         int response = 0;
-        String ans = "";
         double percentage;
         boolean correct;
         boolean quit = false;
@@ -22,14 +20,14 @@ public class LearnMath {
         SecureRandom random = new SecureRandom();
         Scanner scnr = new Scanner(System.in);
 
-        while(!quit){
+        while (!quit) {
             numCorrect = 0;
-            for(int i = 0; i <NUM_QUESTIONS; i++){ //CHANGE TO 10
+            for (int i = 0; i < NUM_QUESTIONS; i++) { //CHANGE TO 10
                 answer = generateQuestions(random);
                 response = scnr.nextInt();
                 correct = generateResponse(response, answer, random);
 
-                if(correct){
+                if (correct) {
                     numCorrect++;
                 }
 
@@ -40,59 +38,36 @@ public class LearnMath {
             }
 
             System.out.println("\nNumber of correct responses: " + numCorrect);
-            System.out.println("Number of incorrect responses " + (NUM_QUESTIONS-numCorrect));
+            System.out.println("Number of incorrect responses " + (NUM_QUESTIONS - numCorrect));
 
-            percentage = ((1.0*numCorrect)/NUM_QUESTIONS)*100; // stop int division
-            if(percentage<75){
-                System.out.println( "\nPlease ask your teacher for extra help.");
-            }else if(percentage >= 75){
+            percentage = ((1.0 * numCorrect) / NUM_QUESTIONS) * 100; // stop int division
+            if (percentage < 75) {
+                System.out.println("\nPlease ask your teacher for extra help.");
+            } else if (percentage >= 75) {
                 System.out.println("\nCongratulations, you are ready to go to the next level!");
             }
 
-            System.out.println("\nThank you for using this program!\nWould you like to begin a new session? (y/n)");
-            ans = scnr.next();
-
-            choice = 0;
-            if (ans.equalsIgnoreCase("y") || ans.equalsIgnoreCase("yes")) {
-                choice = 1;
-            } else if (ans.equalsIgnoreCase("n") || ans.equalsIgnoreCase("no")) {
-                quit = true;
-                choice = 2;
-            }
-            //ensures a valid response
-            while ((choice != 1) && (choice != 2)) {
-                System.out.println("Sorry, that was not a valid response. \nPlease enter again:");
-                System.out.println("Enter y/Y/yes/YES if another person would like to rate these topics.");
-                System.out.println("Enter n/N/no/NO if all responses have been logged.");
-                ans = scnr.next();
-                System.out.print("\n");
-                if (ans.equalsIgnoreCase("y") || ans.equalsIgnoreCase("yes")) {
-                    choice = 1;
-                } else if (ans.equalsIgnoreCase("n") || ans.equalsIgnoreCase("no")) {
-                    quit = true;
-                    choice = 2;
-                }
-            }
+            quit = endOfSession(scnr);
 
         }
 
         scnr.close();
     }
 
-    public static int generateQuestions(SecureRandom rand){
+    public static int generateQuestions(SecureRandom rand) {
         int int1 = rand.nextInt(10);
         int int2 = rand.nextInt(10);
 
         System.out.println("How much is " + int1 + " times " + int2 + "?");
 
-        return int1*int2;
+        return int1 * int2;
     }
 
-    public static boolean generateResponse(int response, int correctAnswer, SecureRandom rand){
-        int randomNum = rand.nextInt((1)+4);
+    public static boolean generateResponse(int response, int correctAnswer, SecureRandom rand) {
+        int randomNum = rand.nextInt((1) + 4);
 
-        if(response == correctAnswer){
-            switch(randomNum) {
+        if (response == correctAnswer) {
+            switch (randomNum) {
                 case 1:
                     System.out.println("Very good!");
                     break;
@@ -110,9 +85,8 @@ public class LearnMath {
                     break;
             }
             return true;
-        }
-        else{
-            switch(randomNum) {
+        } else {
+            switch (randomNum) {
                 case 1:
                     System.out.println("No please try again.");
                     break;
@@ -134,15 +108,56 @@ public class LearnMath {
 
     }
 
-    public void determineDifficultyLevel(){
+    public int determineDifficultyLevel(Scanner scanner) {
+        System.out.println("Which level of difficulty would you like?");
+        System.out.println("1. Easy \n2.Medium \nHard \nVery Hard");
+        System.out.println("Please enter the number of your selection (1-4)");
+
+        int answer = scanner.nextInt();
+
+        while (answer != 1 || answer != 2 || answer != 3 || answer != 4) {
+            System.out.println("Sorry that was not a valid choice");
+            System.out.println("Please enter the number of your selection (1-4)");
+
+            answer = scanner.nextInt();
+        }
+
+        return answer;
 
     }
 
-    public void determineProblemType(){
+    public void determineProblemType() {
 
     }
 
+    public static boolean endOfSession(Scanner scanner) {
+        String ans = "";
+        boolean notReturning = true;
 
+        System.out.println("\nThank you for using this program!\nWould you like to begin a new session? (y/n)");
+        ans = scanner.next();
 
+        if (ans.equalsIgnoreCase("y") || ans.equalsIgnoreCase("yes")) {
+            return false;
+        } else if (ans.equalsIgnoreCase("n") || ans.equalsIgnoreCase("no")) {
+            return true;
+        }
+        //If it hasn't returned at this point it was an invalid response
+        while (notReturning) {
+            System.out.println("Sorry, that was not a valid response. \nPlease enter again:");
+            System.out.println("Enter y/Y/yes/YES if you or another person would like to begin a session.");
+            System.out.println("Enter n/N/no/NO if you want to quit.");
+            ans = scanner.next();
+            System.out.print("\n");
+            if (ans.equalsIgnoreCase("y") || ans.equalsIgnoreCase("yes")) {
+                return false;
+            } else if (ans.equalsIgnoreCase("n") || ans.equalsIgnoreCase("no")) {
+                return true;
+            }
 
+        }
+        //not needed because I force the return above but the IDE was yelling at me:
+        return true;
+    }
 }
+
