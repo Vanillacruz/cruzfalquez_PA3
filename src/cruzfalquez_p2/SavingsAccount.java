@@ -7,6 +7,24 @@
 package cruzfalquez_p2;
 
 public class SavingsAccount {
-    //static private annualInterestRate;
-    //private savingsBalance;
+    private static double annualInterestRate;
+    private double savingsBalance;
+
+    public void setSavingsBalance(double savingsBalance){
+        this.savingsBalance = savingsBalance;
+    }
+
+    public double getSavingsBalance(){
+        return savingsBalance;
+    }
+
+    public void calculateMonthlyInterest(){
+        savingsBalance += savingsBalance*(annualInterestRate/12);
+    }
+
+    public static void modifyInterestRate(double newValue){
+        annualInterestRate = newValue;
+    }
+
+
 }

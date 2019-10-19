@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e5f8529-0ee1-4ad9-b9dd-cc80dd96d4f3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/cruzfalquez_p2/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/cruzfalquez_PA3/cruzfalquez_p1/LearnMath.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cruzfalquez_PA3/cruzfalquez_p1/LearnMath.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cruzfalquez_p1/LearnMath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cruzfalquez_p1/LearnMath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cruzfalquez_p2/SavingsAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cruzfalquez_p2/SavingsAccount.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +84,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
