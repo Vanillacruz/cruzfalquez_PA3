@@ -9,23 +9,29 @@ package cruzfalquez_p2;
 public class Application {
     public static void main(String[] args) {
         final int NUM_MONTHS = 12;
-
+        int monthlyInterest = 0;
         SavingsAccount saver1 = new SavingsAccount();
         SavingsAccount saver2 = new SavingsAccount();
 
         saver1.setSavingsBalance(2000.00);
         saver2.setSavingsBalance(3000.00);
-
         saver1.modifyInterestRate(0.04);
 
-        //print out for all 12 months
+        System.out.println("Saver 1: ");
         for(int i = 0; i < NUM_MONTHS; i++){
-
-
+            saver1.calculateMonthlyInterest();
+            System.out.format("Month %d's balance is $%.2f\n", (i+1), saver1.getSavingsBalance());
         }
 
-        saver1.modifyInterestRate(0.05);
+        System.out.println("\nSaver 2: ");
+        for(int i = 0; i < NUM_MONTHS; i++){
+            saver2.calculateMonthlyInterest();
+            System.out.format("Month %d's balance is $%.2f\n", (i+1), saver2.getSavingsBalance());
+        }
 
         // calculate next months interest and print for both
+        saver1.modifyInterestRate(0.05);
+        System.out.format("\nSaver 1: \nMonth 13's balance is: $%.2f\n", saver1.getSavingsBalance());
+        System.out.format("\nSaver 2: \nMonth 13's balance is: $%.2f\n", saver2.getSavingsBalance());
     }
 }

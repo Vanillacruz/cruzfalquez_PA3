@@ -1,7 +1,7 @@
 /*
  	Daniela Cruz Falquez
 	Programming Assignment 3- Problem 2
-	10/15/2019
+	10/17/2019
 */
 
 package cruzfalquez_p2;
