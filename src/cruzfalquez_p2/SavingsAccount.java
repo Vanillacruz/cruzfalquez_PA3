@@ -3,7 +3,6 @@
 	Programming Assignment 3- Problem 2
 	10/17/2019
 */
-
 package cruzfalquez_p2;
 
 public class SavingsAccount {
@@ -25,6 +24,5 @@ public class SavingsAccount {
     public static void modifyInterestRate(double newValue){
         annualInterestRate = newValue;
     }
-
 
 }
